@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #83a4d4, #b6fbff);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            font-size: 1rem;
+            color: #fff;
+            background: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #0056b3;
+        }
+
+        .current-weather {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .current-weather h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .forecast {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .forecast-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .forecast-card h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .forecast-card p {
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Forecast</h1>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" id="location" placeholder="Enter your location">
+            <button onclick="fetchWeather()">Get Weather</button>
+        </div>
+
+        <!-- Current Weather Display -->
+        <div class="current-weather">
+            <h2>Current Weather</h2>
+            <p id="current-temp">Temperature: --</p>
+            <p id="current-humidity">Humidity: --</p>
+            <p id="current-wind">Wind Speed: --</p>
+        </div>
+
+        <!-- 5-Day Forecast -->
+        <div class="forecast">
+            <div class="forecast-card">
+                <h3>Day 1</h3>
+                <p>Temp: --</p>
+                <p>Condition: --</p>
+            </div>
+            <div class="forecast-card">
+                <h3>Day 2</h3>
+                <p>Temp: --</p>
+                <p>Condition: --</p>
+            </div>
+            <div class="forecast-card">
+                <h3>Day 3</h3>
+                <p>Temp: --</p>
+                <p>Condition: --</p>
+            </div>
+            <div class="forecast-card">
+                <h3>Day 4</h3>
+                <p>Temp: --</p>
+                <p>Condition: --</p>
+            </div>
+            <div class="forecast-card">
+                <h3>Day 5</h3>
+                <p>Temp: --</p>
+                <p>Condition: --</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    app.get('/api/weather', async (req, res) => {
+        const { lat, lon } = req.query;
+        const response = await axios.get(`API_URL?lat=${lat}&lon=${lon}&appid=YOUR_API_KEY`);
+        res.json(response.data);
+    
+    });
+
+        // Placeholder function to fetch weather (you'll integrate this with an API later)
+        function fetchWeather() {
+            const location = document.getElementById('location').value;
+            alert(`Fetching weather for: ${location}`);
+            // API integration goes here
+        }
+
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+    </script>
+</body>
+</html>
